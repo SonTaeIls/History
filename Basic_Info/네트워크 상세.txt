@@ -1,3 +1,28 @@
 2021.06.17
 
-Moya vs Alamofire
+## Moya란?
+우리가 기본적으로 가장 많이쓰는 라이브러리는 Alamofire일 것이다. 
+그런데 굳이 Moya를 사용해야 할 이유가 있을까? 
+
+이유이자 가장 좋은 장점은 재사용성과 캡슐화이다. Moya를 사용하면 Network Layer 부분을 캡슐화 해놓고 보다 깔끔하게 Request, Response을 사용히 가능하다.
+Alamofire와 직접 대화하지 않고 네트워크할 수 있게 도와준다.
+
+
+
+## Moya 구성?
+ 우선 Moya의 흐름은 MoyaProvider -> EndPoint -> URLRequest 이다.
+
+Provider
+ - 모든 네트워크 서비스와 상호작용할때 만들고 사용할 주요한 객체입니다. 초기화할때 Moya Target을 가지는 일반적인 객체입니다.
+
+Target
+ - 일반적으로 전체 API 서비스를 설명합니다. 이 경우에는, Marvel target과 Imgur target이 있습니다. 그들 각 타겟은 서비스, 그 자체의 가능한 끝점, 
+   요청을 이행하는 각 끝점에 요구되는 정보를 설명합니다.
+   
+Endpoint
+ - Moya는 네트워크 요청을 이행하는 요구된 정보의 기본조각을 설명하는 반 내부(semi-internal) 끝점(Endpoint) 객체를 사용합니다.
+   MoyaProvider는 모든 target들을 끝점(Endpoint)으로 변형(transforms)하고, 결국에는 원시 URLRequest로 변형되어 집니다. 
+   
+   
+## 자 이제 라이브러리를 사용하기위한 테스트 코드를 확인해보자
+Chater 1. Moya를 사용해보자
